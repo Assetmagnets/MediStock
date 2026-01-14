@@ -114,8 +114,8 @@ export default function ForgotPassword() {
             <div className="auth-container animate-slideUp">
                 <div className="auth-header">
                     <div className="auth-logo">
-                        <img src="/logo.png" alt="MediStock" className="auth-logo-img" />
-                        <span className="logo-text">MediStock</span>
+                        <img src="/logo.png" alt="IntellPharma" className="auth-logo-img" />
+                        <span className="logo-text">IntellPharma</span>
                     </div>
                     <h1>
                         {step === 1 && 'Forgot Password'}

@@ -66,8 +66,8 @@ export default function Sidebar() {
             <aside className={`sidebar glass-sidebar ${isOpen ? 'open' : ''}`}>
                 {/* Logo */}
                 <div className="sidebar-logo">
-                    <img src="/logo.png" alt="PharmaStock" className="sidebar-logo-img" />
-                    <span className="logo-text">PharmaStock</span>
+                    <img src="/logo.png" alt="IntellPharma" className="sidebar-logo-img" />
+                    <span className="logo-text">IntellPharma</span>
                 </div>
 
                 {/* Branch Switcher */}

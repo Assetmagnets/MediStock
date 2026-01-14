@@ -41,7 +41,7 @@ router.post('/prompt', authenticate, requireFeature('ai'), async (req, res) => {
         // Initialize Gemini
         const { GoogleGenerativeAI } = require("@google/generative-ai");
         const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-        const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+        const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-lite-preview" });
 
         // Construct context-aware prompt
         const systemContext = `
@@ -91,7 +91,7 @@ router.post('/parse-bill', authenticate, requireFeature('ai'), async (req, res) 
 
         const { GoogleGenerativeAI } = require("@google/generative-ai");
         const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-        const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+        const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-lite-preview" });
 
         const prompt = `
             Extract medicines/products, quantities, and prices (if available) from the following text.

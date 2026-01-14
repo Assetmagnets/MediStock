@@ -30,7 +30,11 @@ export default function Header({ title, icon: Icon, children }) {
             <div className="header-right">
                 {children}
                 {/* User Info */}
-                <div className="header-user">
+                <div
+                    className="header-user"
+                    onClick={() => navigate('/settings')}
+                    title="Go to Settings"
+                >
                     <div className="user-avatar">
                         {user?.name?.charAt(0).toUpperCase()}
                     </div>

@@ -122,15 +122,7 @@ export default function Billing() {
 
     // Update cart item quantity
     const updateQuantity = (productId, newQty) => {
-        const item = cart.find(i => i.productId === productId);
-        if (newQty > item.maxQuantity) {
-            alert(`Only ${item.maxQuantity} units available`);
-            return;
-        }
-        if (newQty < 1) {
-            removeFromCart(productId);
-            return;
-        }
+        if (newQty < 0) return;
         setCart(cart.map(item =>
             item.productId === productId ? { ...item, quantity: newQty } : item
         ));
@@ -320,7 +312,8 @@ export default function Billing() {
                                                 <span className="item-name">{item.name}</span>
                                                 <span className="item-price">{formatCurrency(item.mrp)} × {item.quantity}</span>
                                             </div>
-                                            <div className="item-controls">
+                                            <div className="item-controls" style={{ gap: '0.5rem' }}>
+                                                {/* Strip Quantity */}
                                                 <div className="quantity-controls">
                                                     <button onClick={() => updateQuantity(item.productId, item.quantity - 1)}>
                                                         <Minus size={14} />
@@ -330,10 +323,11 @@ export default function Billing() {
                                                         <Plus size={14} />
                                                     </button>
                                                 </div>
+
                                                 <input
                                                     type="number"
                                                     className="discount-input"
-                                                    placeholder="Disc"
+                                                    placeholder="Disc %"
                                                     value={item.discount || ''}
                                                     onChange={(e) => updateItemDiscount(item.productId, e.target.value)}
                                                 />
@@ -342,7 +336,7 @@ export default function Billing() {
                                                 </button>
                                             </div>
                                             <div className="item-total">
-                                                {formatCurrency((item.mrp * item.quantity) - item.discount)}
+                                                {formatCurrency((item.mrp * item.quantity) * (1 - (item.discount || 0) / 100))}
                                             </div>
                                         </div>
                                     ))}
@@ -475,7 +469,7 @@ export default function Billing() {
                             <div className="invoice-print-area" id="invoice-print">
                                 {/* Invoice Header with Pharmacy Name */}
                                 <div className="invoice-header-print">
-                                    <h1 className="pharmacy-name">{invoice.branch?.name || 'Medistock Pharmacy'}</h1>
+                                    <h1 className="pharmacy-name">{invoice.branch?.name || 'IntellPharma'}</h1>
                                     <p className="pharmacy-address">{invoice.branch?.address || ''}</p>
                                     {invoice.branch?.phone && <p>Phone: {invoice.branch.phone}</p>}
                                     {invoice.branch?.gstNumber && <p>GSTIN: {invoice.branch.gstNumber}</p>}
