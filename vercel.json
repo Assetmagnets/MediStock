@@ -19,11 +19,19 @@
             "dest": "/server/server.js"
         },
         {
+            "src": "/assets/(.*)",
+            "dest": "/client/assets/$1"
+        },
+        {
+            "src": "/(.*)\\.(png|jpg|jpeg|svg|ico|json|css|js)$",
+            "dest": "/client/$1.$2"
+        },
+        {
             "handle": "filesystem"
         },
         {
             "src": "/(.*)",
-            "dest": "/index.html"
+            "dest": "/client/index.html"
         }
     ]
 }
