@@ -206,7 +206,7 @@ export default function Landing() {
                         <span>IntellPharma</span>
                     </div>
                     <p style={{ color: "#BFC3D6" }}>
-                        © {new Date().getFullYear()} Aerobill by{" "}
+                        © {new Date().getFullYear()} IntellPharma by{" "}
                         <a
                             href="https://www.assetmagnets.com/"
                             target="_blank"
