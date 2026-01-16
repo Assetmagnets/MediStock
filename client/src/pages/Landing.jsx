@@ -33,7 +33,7 @@ export default function Landing() {
             <nav className="landing-nav">
                 <div className="nav-brand">
                     <img src="/logo.png" alt="Medistock" className="brand-logo" />
-                    <span className="brand-text">Medistock</span>
+                    <span className="brand-text">IntellPharma</span>
                 </div>
                 <div className="nav-links">
                     {isAuthenticated ? (
@@ -203,9 +203,25 @@ export default function Landing() {
                 <div className="footer-content">
                     <div className="footer-brand">
                         <img src="/logo.png" alt="Medistock" className="footer-logo" />
-                        <span>Medistock</span>
+                        <span>IntellPharma</span>
                     </div>
-                    <p>© {new Date().getFullYear()} Medistock. All rights reserved.</p>
+                    <p style={{ color: "#BFC3D6" }}>
+                        © {new Date().getFullYear()} Aerobill by{" "}
+                        <a
+                            href="https://www.assetmagnets.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{
+                                color: "#FF4D00",   // Orange like your image
+                                textDecoration: "none",
+                                fontWeight: "600",
+                            }}
+                        >
+                            ASSETMAGNETS
+                        </a>
+                        . All rights reserved.
+                    </p>
+
                 </div>
             </footer>
 
