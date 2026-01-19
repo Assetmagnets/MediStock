@@ -24,6 +24,8 @@ const allowedOrigins = [
     'http://localhost:5174',
     'http://localhost:5175',
     'http://localhost:3000',
+    'https://www.intellpharma.in',
+    'https://intellpharma.in',
     // Add production origins from environment variable (comma-separated)
     ...(process.env.CORS_ORIGIN ? process.env.CORS_ORIGIN.split(',').map(o => o.trim()) : [])
 ].filter(Boolean);
