@@ -123,7 +123,8 @@ export const stripeAPI = {
     createCheckoutSession: (planId) => api.post('/stripe/create-checkout-session', { planId }),
     getSubscriptionStatus: () => api.get('/stripe/subscription-status'),
     createPortalSession: () => api.post('/stripe/create-portal-session'),
-    verifySession: (sessionId) => api.get(`/stripe/verify-session/${sessionId}`)
+    verifySession: (sessionId) => api.get(`/stripe/verify-session/${sessionId}`),
+    addExtraBranches: (count) => api.post('/stripe/add-extra-branches', { count })
 };
 
 

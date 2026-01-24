@@ -27,7 +27,7 @@ export default function Subscription() {
     const [plans, setPlans] = useState([]);
     const [currentSub, setCurrentSub] = useState(null);
     const [stripeStatus, setStripeStatus] = useState(null);
-    const [extraBranchPrice, setExtraBranchPrice] = useState(500);
+    const [extraBranchPrice, setExtraBranchPrice] = useState(499);
     const [loading, setLoading] = useState(true);
     const [showUpgradeModal, setShowUpgradeModal] = useState(false);
     const [selectedPlan, setSelectedPlan] = useState(null);
@@ -56,7 +56,7 @@ export default function Subscription() {
             // First get plans
             const plansRes = await subscriptionAPI.getPlans();
             setPlans(plansRes.data.plans || []);
-            setExtraBranchPrice(plansRes.data.extraBranchPrice || 500);
+            setExtraBranchPrice(plansRes.data.extraBranchPrice || 499);
 
             // Call Stripe status FIRST - this syncs the database
             let stripeRes = { data: null };
@@ -119,15 +119,26 @@ export default function Subscription() {
     };
 
     const handleAddBranches = async () => {
-        const count = prompt('How many extra branches do you want to add?', '1');
-        if (!count || isNaN(count)) return;
+        const count = prompt('How many extra branches do you want to add? (₹499/mo each)', '1');
+        if (!count || isNaN(count) || count < 1) return;
 
+        setProcessing('EXTRA_BRANCH'); // Show loading state
         try {
-            await subscriptionAPI.addBranches(parseInt(count));
-            loadSubscriptionData();
-            alert(`Added ${count} extra branch(es)!`);
+            const response = await stripeAPI.addExtraBranches(parseInt(count));
+
+            if (response.data.url) {
+                // Case B: Redirect to Checkout
+                window.location.href = response.data.url;
+            } else if (response.data.success) {
+                // Case A: Immediate update (Existing Sub)
+                alert(response.data.message);
+                loadSubscriptionData();
+            }
         } catch (error) {
-            alert(error.response?.data?.error || 'Failed to add branches');
+            console.error('Add branches error:', error);
+            alert(error.response?.data?.error || 'Failed to process extra branches payment.');
+        } finally {
+            setProcessing(null);
         }
     };
 
@@ -271,8 +282,18 @@ export default function Subscription() {
                                             <Settings size={16} /> Manage Billing
                                         </button>
                                     )}
-                                    <button className="btn btn-secondary" onClick={handleAddBranches}>
-                                        + Add Extra Branches (₹{extraBranchPrice}/mo each)
+                                    <button
+                                        className="btn btn-secondary"
+                                        onClick={handleAddBranches}
+                                        disabled={processing !== null}
+                                    >
+                                        {processing === 'EXTRA_BRANCH' ? (
+                                            <>
+                                                <Loader2 className="animate-spin" size={16} /> Processing...
+                                            </>
+                                        ) : (
+                                            `+ Add Extra Branches (₹${extraBranchPrice}/mo each)`
+                                        )}
                                     </button>
                                     {currentSub.autoRenew && !hasActiveStripeSubscription() && (
                                         <button className="btn btn-ghost" onClick={handleCancelRenewal}>

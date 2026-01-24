@@ -81,8 +81,9 @@ export default function Pricing() {
     return (
         <div className="pricing-page" style={{ overflowX: 'hidden' }}>
             <SEO
-                title="Pricing Plans"
-                description="Flexible pricing plans for pharmacies of all sizes. Start for free with our Basic plan or upgrade for advanced AI features."
+                title="Pricing Plans - Affordable Pharmacy Software"
+                description="Flexible pricing plans for pharmacies of all sizes. Start for free with our Basic plan or upgrade for advanced AI features. Best value in India."
+                keywords="pharmacy software price, medical medical billing software cost, free pharmacy software trial, intellpharma pricing"
                 canonicalUrl="/pricing"
             />
 
@@ -133,10 +134,10 @@ export default function Pricing() {
 
             {/* 2. Pricing Grid (4 Columns) */}
             <section style={{ padding: '2rem 6% 6rem', maxWidth: '1440px', margin: '0 auto' }}>
-                <div className="plans-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.5rem', marginTop: '2rem', alignItems: 'stretch' }}>
+                <div className="plans-grid pricing-grid">
 
                     {/* Basic Plan */}
-                    <div className="glass-panel" style={{ display: 'flex', flexDirection: 'column', borderTop: '4px solid var(--success)', padding: '2rem', borderRadius: '16px', minHeight: '480px' }}>
+                    <div className="glass-panel pricing-card" style={{ borderTop: '4px solid var(--success)' }}>
                         <div style={{ color: 'var(--success)', marginBottom: '1rem' }}>
                             <Zap size={40} />
                         </div>
@@ -171,19 +172,14 @@ export default function Pricing() {
                     </div>
 
                     {/* Pro Plan */}
-                    <div className="glass-panel featured" style={{
-                        display: 'flex',
-                        flexDirection: 'column',
+                    <div className="glass-panel featured pricing-card" style={{
                         zIndex: 10,
                         border: '2px solid #0066e6',
                         background: 'linear-gradient(145deg, #1e293b 0%, #0f172a 100%)',
-                        padding: '2rem',
                         paddingTop: '2.5rem',
                         position: 'relative',
                         boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
-                        overflow: 'visible',
-                        borderRadius: '16px',
-                        minHeight: '480px'
+                        overflow: 'visible'
                     }}>
                         <div style={{
                             position: 'absolute', top: '-18px', left: '50%', transform: 'translateX(-50%)',
@@ -223,7 +219,7 @@ export default function Pricing() {
                     </div>
 
                     {/* Premium Plan */}
-                    <div className="glass-panel" style={{ display: 'flex', flexDirection: 'column', padding: '2rem', borderTop: '4px solid #F59E0B', borderRadius: '16px', minHeight: '480px' }}>
+                    <div className="glass-panel pricing-card" style={{ borderTop: '4px solid #F59E0B' }}>
                         <div style={{ color: '#F59E0B', marginBottom: '1rem' }}>
                             <Crown size={40} />
                         </div>
@@ -252,7 +248,7 @@ export default function Pricing() {
                     </div>
 
                     {/* Enterprise Plan */}
-                    <div className="glass-panel" style={{ display: 'flex', flexDirection: 'column', padding: '2rem', borderRadius: '16px', minHeight: '480px' }}>
+                    <div className="glass-panel pricing-card">
                         <div style={{ color: 'var(--dark-text)', marginBottom: '1rem' }}>
                             <Building2 size={40} />
                         </div>

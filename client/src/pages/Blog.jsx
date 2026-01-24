@@ -51,8 +51,9 @@ const Blog = () => {
     return (
         <div className="blog-page">
             <SEO
-                title="Pharmacy Insights Blog"
-                description="Latest news, tips, and insights on pharmacy management, healthcare technology, and business growth."
+                title="Pharmacy Business Insights Blog"
+                description="Latest news, tips, and insights on pharmacy management, healthcare technology, and business growth. Stay updated with IntellPharma."
+                keywords="pharmacy business tips, medical store management blog, healthcare technology trends, pharmacy growth strategies"
                 canonicalUrl="/blog"
             />
             <style>

@@ -200,31 +200,93 @@
     color: #6ee7b7;
 }
 
-/* Dark mode form inputs */
+/* Dark mode form inputs - Enhanced for Modal */
 .auth-page .form-input,
-.auth-page .glass-input {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: var(--dark-border);
-    color: var(--dark-text);
+.auth-page .glass-input,
+.auth-container .form-input,
+.auth-container .glass-input {
+    background: rgba(15, 23, 42, 0.6) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #f8fafc !important;
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
 }
 
 .auth-page .form-input:focus,
-.auth-page .glass-input:focus {
-    border-color: var(--primary-500);
-    box-shadow: 0 0 0 3px rgba(0, 102, 230, 0.2);
+.auth-page .glass-input:focus,
+.auth-container .form-input:focus,
+.auth-container .glass-input:focus {
+    border-color: var(--primary-500) !important;
+    box-shadow: 0 0 0 4px rgba(0, 102, 230, 0.15) !important;
+    background: rgba(15, 23, 42, 0.8) !important;
 }
 
 .auth-page .form-input::placeholder,
-.auth-page .glass-input::placeholder {
-    color: var(--dark-text-secondary);
+.auth-page .glass-input::placeholder,
+.auth-container .form-input::placeholder,
+.auth-container .glass-input::placeholder {
+    color: rgba(148, 163, 184, 0.6) !important;
 }
 
-.auth-page .form-label {
-    color: var(--dark-text);
+.auth-page .form-label,
+.auth-container .form-label {
+    color: #f8fafc;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    display: block;
 }
 
-.auth-page .form-hint {
-    color: var(--dark-text-secondary);
+.auth-page .form-hint,
+.auth-container .form-hint {
+    color: #94a3b8;
+}
+
+/* Modal Specific Overrides */
+.modal-overlay {
+    background: rgba(0, 0, 0, 0.7) !important;
+    backdrop-filter: blur(8px);
+}
+
+.auth-container {
+    background: linear-gradient(145deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.98)) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
+}
+
+.auth-header h1 {
+    color: #f8fafc !important;
+    font-weight: 700;
+    margin-top: 0.5rem;
+}
+
+.auth-header p {
+    color: #94a3b8 !important;
+}
+
+.checkbox-label span {
+    color: #cbd5e1 !important;
+}
+
+.auth-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #94a3b8 !important;
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.auth-footer .link {
+    color: var(--primary-400) !important;
+    font-weight: 500;
+}
+
+/* Close Button Hover */
+.modal-close-btn:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #f8fafc !important;
+    transform: rotate(90deg);
 }
 
 /* Responsive */
@@ -239,4 +301,37 @@
         gap: var(--spacing-sm);
         align-items: center;
     }
+}
+
+/* Custom Scrollbar for Modal (Register) */
+.modal-scroll-content {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+    scroll-behavior: smooth;
+}
+
+/* Hide scrollbar completely (Login) */
+.no-scrollbar {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.modal-scroll-content::-webkit-scrollbar {
+    width: 6px;
+    display: block;
+}
+
+.modal-scroll-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.modal-scroll-content::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
 }

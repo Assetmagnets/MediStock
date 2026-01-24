@@ -1,11 +1,13 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { useAuthModal } from '../context/AuthModalContext';
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import '../styles/landing.css';
 
 export default function PublicNavbar() {
     const { isAuthenticated } = useAuth();
+    const { openLogin, openRegister } = useAuthModal();
     const [isOpen, setIsOpen] = useState(false);
     const location = useLocation();
 
@@ -49,6 +51,42 @@ export default function PublicNavbar() {
                 >
                     Blog
                 </Link>
+
+                {/* Mobile Menu Actions */}
+                <div className="mobile-nav-actions">
+                    {isAuthenticated ? (
+                        <Link
+                            to="/dashboard"
+                            className="nav-link"
+                            onClick={() => setIsOpen(false)}
+                        >
+                            Dashboard
+                        </Link>
+                    ) : (
+                        <>
+                            <button
+                                onClick={() => {
+                                    openLogin();
+                                    setIsOpen(false);
+                                }}
+                                className="nav-link"
+                                style={{ background: 'none', border: 'none', cursor: 'pointer', font: 'inherit' }}
+                            >
+                                Login
+                            </button>
+                            <button
+                                onClick={() => {
+                                    openRegister();
+                                    setIsOpen(false);
+                                }}
+                                className="nav-link"
+                                style={{ background: 'none', border: 'none', cursor: 'pointer', font: 'inherit' }}
+                            >
+                                Get Started
+                            </button>
+                        </>
+                    )}
+                </div>
             </div>
 
             <div className="nav-actions" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
@@ -58,12 +96,12 @@ export default function PublicNavbar() {
                     </Link>
                 ) : (
                     <>
-                        <Link to="/login" className="btn btn-ghost">
+                        <button onClick={openLogin} className="btn btn-ghost">
                             Login
-                        </Link>
-                        <Link to="/register" className="btn btn-primary">
+                        </button>
+                        <button onClick={openRegister} className="btn btn-primary">
                             Get Started
-                        </Link>
+                        </button>
                     </>
                 )}
             </div>

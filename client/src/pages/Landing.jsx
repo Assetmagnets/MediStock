@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import PublicNavbar from '../components/PublicNavbar';
 import PublicFooter from '../components/PublicFooter';
+import { useAuthModal } from '../context/AuthModalContext';
 import {
     Sparkles,
     Rocket,
@@ -17,9 +18,16 @@ import {
 import '../styles/landing.css';
 
 export default function Landing() {
+    const { openRegister } = useAuthModal();
+
     return (
         <div className="landing-page">
-            <SEO />
+            <SEO
+                title="Best Pharmacy Management Software in India"
+                description="IntellPharma is the #1 smart pharmacy management system in India. AI-driven inventory, GST billing, and expiry tracking for modern medical shops."
+                keywords="pharmacy management system, medical store software, pharma software india, best billing software for pharmacy, inventory management system, IntellPharma"
+                canonicalUrl="/"
+            />
             <div className="landing-bg">
                 <div className="bg-gradient"></div>
                 <div className="bg-pattern"></div>
@@ -41,9 +49,9 @@ export default function Landing() {
                         IntellPharma helps you manage your pharmacy inventory, generate GST bills, and track expiry dates—all in one place. Designed for speed, security, and simplicity.
                     </p>
                     <div className="hero-actions">
-                        <Link to="/register" className="btn btn-primary btn-lg">
+                        <button onClick={openRegister} className="btn btn-primary btn-lg">
                             Start Free Trial
-                        </Link>
+                        </button>
                         <Link to="/pricing" className="btn btn-secondary btn-lg">
                             See Pricing
                         </Link>
@@ -161,9 +169,9 @@ export default function Landing() {
                 <div className="cta-content">
                     <h2>Ready to Get Started?</h2>
                     <p>Join thousands of pharmacies already using IntellPharma</p>
-                    <Link to="/register" className="btn btn-primary btn-lg">
+                    <button onClick={openRegister} className="btn btn-primary btn-lg">
                         Start Your Free Trial
-                    </Link>
+                    </button>
                 </div>
             </section>
 

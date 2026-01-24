@@ -140,6 +140,7 @@ export function AuthProvider({ children }) {
         switchBranch,
         hasRole,
         canAccessFinancials,
+        isAuthenticated: !!token,
         API_URL
     };
 

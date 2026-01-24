@@ -40,7 +40,7 @@ const PLANS = {
     }
 };
 
-const EXTRA_BRANCH_PRICE = 500;
+const EXTRA_BRANCH_PRICE = 499;
 
 // Get available plans
 router.get('/plans', async (req, res) => {

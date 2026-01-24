@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
+import { useAuthModal } from '../context/AuthModalContext';
 import {
     CheckCircle2,
     ArrowRight,
@@ -81,11 +82,14 @@ const FAQItem = ({ question, answer }) => {
 };
 
 export default function About() {
+    const { openRegister } = useAuthModal();
+
     return (
         <div className="about-page" style={{ overflowX: 'hidden' }}>
             <SEO
-                title="About Us"
-                description="Learn how IntellPharma is revolutionizing pharmacy management with AI-driven inventory control, billing, and analytics."
+                title="About Us - AI Powered Pharmacy Solution"
+                description="Learn how IntellPharma is revolutionizing pharmacy management with AI-driven inventory control, billing, and analytics. Trusted by 5000+ pharmacies."
+                keywords="about intellpharma, pharmacy software company, medical shop billing software, smart pharmacy solutions"
                 canonicalUrl="/about"
             />
 
@@ -133,11 +137,11 @@ export default function About() {
                         IntellPharma helps you manage your pharmacy inventory, generate GST bills, and track expiry dates—all in one place.
                         Designed for speed, security, and simplicity.
                     </p>
-                    <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                        <Link to="/register" className="btn btn-primary" style={{ padding: '1rem 2rem', fontSize: '1.125rem' }}>
+                    <div className="hero-actions">
+                        <button onClick={openRegister} className="btn btn-primary btn-lg">
                             Start Free Trial
-                        </Link>
-                        <Link to="/pricing" className="btn btn-secondary" style={{ padding: '1rem 2rem', fontSize: '1.125rem' }}>
+                        </button>
+                        <Link to="/pricing" className="btn btn-secondary btn-lg">
                             See Pricing
                         </Link>
                     </div>
@@ -418,9 +422,9 @@ export default function About() {
                 <p style={{ fontSize: '1.25rem', color: '#94a3b8', marginBottom: '3rem', maxWidth: '600px', margin: '0 auto 3rem' }}>
                     Join thousands of smart pharmacists who trust IntellPharma for their business.
                 </p>
-                <Link to="/register" className="btn btn-primary" style={{ padding: '1rem 3rem', fontSize: '1.25rem', borderRadius: '100px' }}>
-                    Get Started for Free <ArrowRight size={20} style={{ marginLeft: '0.5rem' }} />
-                </Link>
+                <button onClick={openRegister} className="btn btn-primary" style={{ padding: '1rem 3rem', fontSize: '1.25rem', borderRadius: '100px', cursor: 'pointer', border: 'none' }}>
+                    Get Started for Free <ArrowRight size={20} style={{ marginLeft: '0.5rem', display: 'inline-block' }} />
+                </button>
             </section>
 
         </div>
